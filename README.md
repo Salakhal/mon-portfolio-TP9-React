@@ -1,25 +1,5 @@
 # Portfolio React Pro - Développeuse Full Stack
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![React](https://img.shields.io/badge/React-18.3-61dafb.svg)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.5-3178c6.svg)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8.svg)
-![Vite](https://img.shields.io/badge/Vite-5.4-646cff.svg)
-
-## 📋 Table des matières
-
-- [Aperçu](#aperçu)
-- [Stack Technique](#stack-technique)
-- [Fonctionnalités](#fonctionnalités)
-- [Structure du Projet](#structure-du-projet)
-- [Installation](#installation)
-- [Commandes Disponibles](#commandes-disponibles)
-- [Pages du Site](#pages-du-site)
-- [Personnalisation](#personnalisation)
-- [Déploiement](#déploiement)
-- [Bonnes Pratiques](#bonnes-pratiques)
-- [Dépannage](#dépannage)
-- [Licence](#licence)
 
 ## 🎯 Aperçu
 
@@ -192,4 +172,36 @@ http://localhost:5173
 - Liens sociaux  
 - Localisation
 
+
+
   
+
+ ##  Démo du Projet
+
+
+
+
+
+
+
+
+
+
+
+## 👤 Auteur
+
+* **École Normale Supérieure de Marrakech**
+  
+* **Réalisé par :** SALMA LAKHAL
+  
+* **Filière  :** CLE_INFO_S5
+
+  
+* **Encadré par :** Pr. Mohamed LACHGAR
+
+* **Cours :** `Développement web full-stack avec JavaScript`
+
+
+
+
+
