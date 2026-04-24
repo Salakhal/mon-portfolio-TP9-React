@@ -52,10 +52,8 @@ Portfolio professionnel moderne développé avec React et TypeScript, présentan
 
 mon-portfolio/
 ├── public/
-│ ├── profile.jpg # Photo de profil
 │ └── certifications/ # Images des certifications
 ├── src/
-│ ├── assets/ # Assets locaux
 │ ├── components/ # Composants réutilisables
 │ ├── data/ # Données centralisées
 │ │ ├── experience.ts
