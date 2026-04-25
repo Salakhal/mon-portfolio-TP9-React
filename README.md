@@ -171,31 +171,57 @@ http://localhost:5173
 - Localisation
 
 
+## 🚀 Déploiement sur Vercel (CI automatique)
 
-  
+###  Étapes
+
+```bash
+git init
+git add .
+git commit -m "feat: portfolio v1"
+git branch -M main
+git remote add origin https://github.com/<user>/mon-portfolio.git
+git push -u origin main
+
+```
+
+
+1. Aller sur https://vercel.com  
+2. Cliquer sur **New Project**  
+3. Importer le repository GitHub  
+
+4. Configuration automatique :
+   - Framework : Vite  
+   - Build Command : `npm run build`  
+   - Output Directory : `dist`  
+
+5. Lancer le déploiement 🚀  
+
+---
+
+###  Démo en ligne_URL publique
+
+👉 https://mon-portfolio-seven-ebon.vercel.app/
+
+---
+
+### ✅ Checkpoint
+
+- Site accessible en ligne  
+- Navigation fonctionnelle (SPA OK)
+
+---
+
+### 💡 Astuce
+
+Ajouter un domaine personnalisé :  
+**Settings → Domains**
+
 
  ##  Démo du Projet
 
 
-
-
-
-
-
 https://github.com/user-attachments/assets/855d2485-7bbf-4854-bbaf-848eebeb4667
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ## 👤 Auteur
