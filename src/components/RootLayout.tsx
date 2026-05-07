@@ -1,13 +1,7 @@
 import { Outlet, NavLink } from "react-router-dom";
-<<<<<<< HEAD
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-
-=======
 import { useState, useEffect } from "react";
 import { Menu, X, Home, Briefcase, FolderGit2, GraduationCap, Award, Mail } from "lucide-react";
 import { profileData } from "../data/profile";
->>>>>>> e350de5 (fix: mobile navbar)
 
 export default function RootLayout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
