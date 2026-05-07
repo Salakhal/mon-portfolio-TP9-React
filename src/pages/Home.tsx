@@ -2,62 +2,66 @@ import { ArrowRight, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  // Remplacez ce chemin par le chemin de votre image
-  // Pour une image dans le dossier public : "/mon-image.jpg"
-  // Pour une image dans src/assets : import monImage from "../assets/mon-image.jpg"
-  const profileImage = "/profile.jpg"; // Changez selon votre image
-  
-  const fullName = "SALMA LAKHAL"; 
+  const fullName = "Salma Lakhal"; 
+  const profileImage = "/salma.jpg";
   
   return (
-    <section className="grid min-h-[70vh] grid-cols-1 items-center gap-16 lg:grid-cols-2">
-      {/* Côté Gauche : Texte */}
-      <div className="flex flex-col items-start space-y-8">
-        <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-600"></span>
-          </span>
-          Disponible pour de nouveaux projets
-        </div>
-
-        <h1 className="text-5xl font-extrabold leading-tight tracking-tight text-zinc-950 md:text-7xl">
-          <span className="block text-blue-600">{fullName}</span>
-          Développeuse Full Stack spécialisée en applications web, mobile et Big Data
-        </h1>
-
-        <p className="max-w-lg text-lg leading-relaxed text-zinc-500">
-          Développeuse Full-Stack spécialisée dans la création d'interfaces haute performance et de systèmes évolutifs. Passionnée par le design épuré et le code robuste.
-        </p>
-
-        <div className="flex flex-wrap gap-4">
-          <Link to="/projects" className="flex items-center gap-2 rounded-2xl bg-blue-600 px-8 py-4 font-semibold text-white transition-all hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200 active:scale-95">
-            Voir mes travaux <ArrowRight size={18} />
-          </Link>
-          <Link to="/contact" className="rounded-2xl border border-zinc-200 bg-white px-8 py-4 font-semibold text-zinc-950 transition-all hover:border-zinc-300 hover:bg-zinc-50 active:scale-95">
-            Me contacter
-          </Link>
-        </div>
-      </div>
-
-      {/* Côté Droit : Image Asymétrique avec photo de profil */}
-      <div className="relative">
-        <div className="aspect-[4/5] overflow-hidden rounded-3xl bg-zinc-200 shadow-2xl transition-transform hover:rotate-1">
-          {profileImage ? (
+    <section className="flex flex-col gap-8 md:gap-12 lg:gap-16">
+      {/* Image - Centrée sur mobile */}
+      <div className="order-1 md:order-2 lg:order-2 flex justify-center">
+        <div className="relative">
+          {/* Taille responsive : plus grande sur mobile */}
+          <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80">
             <img 
               src={profileImage} 
               alt={`${fullName} - Développeuse Full Stack`}
-              className="h-full w-full object-cover"
+              className="w-full h-full object-cover rounded-full shadow-lg hover:shadow-xl transition-shadow"
             />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center bg-linear-to-br from-zinc-100 to-zinc-300">
-              <Terminal size={80} className="text-zinc-400 opacity-50" />
-            </div>
-          )}
+          </div>
+          {/* Décoration - plus discrète sur mobile */}
+          <div className="absolute -bottom-3 -left-3 md:-bottom-6 md:-left-6 -z-10 h-24 w-24 md:h-48 md:w-48 rounded-2xl border border-zinc-200 bg-white/50" />
         </div>
-        {/* Décoration asymétrique */}
-        <div className="absolute -bottom-6 -left-6 -z-10 h-64 w-64 rounded-3xl border border-zinc-200 bg-white/50" />
-        <div className="absolute -right-6 -top-6 -z-10 h-48 w-48 rounded-3xl bg-blue-100/50 blur-2xl" />
+      </div>
+
+      {/* Texte */}
+      <div className="order-2 md:order-1 flex flex-col items-start space-y-5 md:space-y-6 lg:space-y-8">
+        {/* Badge disponibilité */}
+        <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 md:px-3 text-xs md:text-sm font-medium text-blue-700">
+          <span className="relative flex h-1.5 w-1.5 md:h-2 md:w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
+            <span className="relative inline-flex h-full w-full rounded-full bg-blue-600"></span>
+          </span>
+          Disponible
+        </div>
+
+        {/* Titre - plus petit sur mobile */}
+        <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold leading-tight tracking-tight text-zinc-950">
+          <span className="block text-blue-600 text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl">
+            {fullName}
+          </span>
+          Développeuse Full Stack spécialisée en applications web, mobile et Big Data
+        </h1>
+
+        {/* Description - texte plus court sur mobile optionnel */}
+        <p className="text-sm sm:text-base md:text-lg leading-relaxed text-zinc-500">
+          Développeuse Full-Stack spécialisée dans la création d'interfaces haute performance et de systèmes évolutifs. Passionnée par le design épuré et le code robuste.
+        </p>
+
+        {/* Boutons - pleine largeur sur mobile */}
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <Link 
+            to="/projects" 
+            className="flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 md:px-6 py-2.5 md:py-3 font-semibold text-white transition-all hover:bg-blue-700 active:scale-95"
+          >
+            Voir mes projets <ArrowRight size={16} className="md:w-[18px]" />
+          </Link>
+          <Link 
+            to="/contact" 
+            className="flex items-center justify-center rounded-xl border border-zinc-200 bg-white px-5 md:px-6 py-2.5 md:py-3 font-semibold text-zinc-950 transition-all hover:border-zinc-300 hover:bg-zinc-50 active:scale-95"
+          >
+            Me contacter
+          </Link>
+        </div>
       </div>
     </section>
   );

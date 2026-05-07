@@ -1,50 +1,101 @@
 import { Outlet, NavLink } from "react-router-dom";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { GraduationCap, Home, FolderGit2, Mail } from "lucide-react";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { profileData } from "../data/profile";
 
 export default function RootLayout() {
-  const navItems = [
-    { to: "/", label: "Accueil", icon: Home },
-    { to: "/projects", label: "Projets", icon: FolderGit2 },
-    { to: "/education", label: "Formations", icon: GraduationCap },
-    { to: "/contact", label: "Contact", icon: Mail },
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const navLinks = [
+    { name: "Accueil", path: "/" },
+    { name: "Expérience", path: "/experience" },
+    { name: "Projets", path: "/projects" },
+    { name: "Éducation", path: "/education" },
+    { name: "Certifications", path: "/certifications" },
+    { name: "Contact", path: "/contact" },
   ];
 
-  const navStyles = ({ isActive }: { isActive: boolean }) => 
-    `inline-flex items-center gap-2 text-sm font-medium transition-colors hover:text-blue-600 ${isActive ? 'text-blue-600' : 'text-zinc-500'}`;
-
   return (
-    <div className="min-h-screen bg-zinc-50 font-sans selection:bg-blue-100 selection:text-blue-900">
-      <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/70 backdrop-blur-md">
-        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-8">
-          <NavLink to="/" className="text-xl font-bold tracking-tighter">STUDIO.JS</NavLink>
+    <div className="min-h-screen bg-zinc-50 font-sans text-zinc-900">
+      <header className="sticky top-0 z-50 w-full border-b border-zinc-200 bg-white/80 backdrop-blur-md">
+        <div className="mx-auto flex h-16 md:h-20 max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
+          <div className="flex items-center gap-2">
+            <span className="text-xl md:text-2xl font-black tracking-tighter text-blue-600">
+              SL<span className="text-zinc-900">.</span>
+            </span>
+          </div>
           
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <NavLink key={item.to} to={item.to} className={navStyles}>
-                <item.icon size={16} />
-                {item.label}
+          <nav className="hidden md:flex md:gap-x-6 lg:gap-x-8">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                className={({ isActive }) =>
+                  `text-sm font-semibold transition-colors ${
+                    isActive ? "text-blue-600" : "text-zinc-600 hover:text-zinc-900"
+                  }`
+                }
+              >
+                {link.name}
               </NavLink>
             ))}
-          </div>
+          </nav>
 
-          <div className="flex items-center gap-4">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-zinc-950 transition-colors">
-              <FaGithub size={20} />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-zinc-950 transition-colors">
-              <FaLinkedin size={20} />
-            </a>
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-zinc-100 transition-colors"
+            aria-label="Menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          <NavLink
+            to="/contact"
+            className="hidden md:block rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-zinc-800"
+          >
+            Me contacter
+          </NavLink>
+        </div>
+
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b border-zinc-200 shadow-lg z-50">
+            <div className="flex flex-col py-4">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.name}
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `px-6 py-3 text-base font-semibold transition-colors ${
+                      isActive ? "text-blue-600 bg-blue-50" : "text-zinc-600 hover:bg-zinc-50"
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ))}
+              <div className="px-6 pt-4 mt-2 border-t border-zinc-100">
+                <NavLink
+                  to="/contact"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block w-full text-center rounded-full bg-zinc-900 px-6 py-3 text-sm font-semibold text-white"
+                >
+                  Me contacter
+                </NavLink>
+              </div>
+            </div>
           </div>
-        </nav>
+        )}
       </header>
 
-      <main className="mx-auto max-w-7xl px-8 py-12">
+      <main className="mx-auto max-w-7xl px-4 md:px-6 py-8 md:py-12 lg:py-20">
         <Outlet />
       </main>
 
-      <footer className="border-t border-zinc-200 py-12 px-8 text-center text-sm text-zinc-500">
-        © {new Date().getFullYear()} — Design Premium Minimalist
+      <footer className="border-t border-zinc-200 bg-white py-8 md:py-10 text-center px-4">
+        <p className="text-xs md:text-sm text-zinc-500">
+          © {new Date().getFullYear()} Salma Lakhal. Tous droits réservés.
+        </p>
       </footer>
     </div>
   );
