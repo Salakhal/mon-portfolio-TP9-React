@@ -1,7 +1,7 @@
 import { Outlet, NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { profileData } from "../data/profile";
+
 
 export default function RootLayout() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
